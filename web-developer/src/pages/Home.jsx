@@ -1,15 +1,20 @@
-import { useAuth } from "../context/AuthContext";
+// pages/Home.jsx
+import BalanceCard from "../components/BalanceCard";
+import TransactionList from "../components/TransactionList";
+import { useTransactions } from "../context/TransactionsContext";
 
 export default function Home() {
-  const { user, balance } = useAuth();
+  const { transactions } = useTransactions();
 
   return (
-    <div className="p-6 max-w-lg mx-auto">
-      <h1 className="text-4xl font-bold mb-6">Қош келдіңіз, {user?.name}!</h1>
-      <div className="bg-white shadow rounded p-6">
-        <h2 className="text-2xl mb-2">Баланс</h2>
-        <p className="text-4xl font-semibold">{balance} ₸</p>
-      </div>
+    <div>
+      <BalanceCard />
+      <h3 className="text-xl font-semibold mb-4">Соңғы транзакциялар</h3>
+      {transactions.length === 0 ? (
+        <p>Транзакциялар жоқ</p>
+      ) : (
+        <TransactionList transactions={transactions.slice(0, 5)} />
+      )}
     </div>
   );
 }

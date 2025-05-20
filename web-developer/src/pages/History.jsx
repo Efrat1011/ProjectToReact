@@ -1,34 +1,13 @@
-import { useTransactions } from "../context/TransactionsContext";
+import { useTransactions } from "../context/TransactionsContext.jsx";
+import TransactionList from "../components/TransactionList.jsx";
 
 export default function History() {
   const { transactions } = useTransactions();
 
-  if (transactions.length === 0) {
-    return (
-      <div className="p-6 max-w-lg mx-auto">
-        <h2 className="text-3xl font-bold mb-6">Транзакциялар тарихы</h2>
-        <p>Транзакциялар жоқ</p>
-      </div>
-    );
-  }
-
   return (
-    <div className="p-6 max-w-lg mx-auto">
-      <h2 className="text-3xl font-bold mb-6">Транзакциялар тарихы</h2>
-      <ul className="space-y-4">
-        {transactions.map(({ id, to, amount, date }) => (
-          <li
-            key={id}
-            className="bg-white p-4 rounded shadow flex justify-between"
-          >
-            <div>
-              <p className="font-semibold">{to}</p>
-              <p className="text-gray-500 text-sm">{date}</p>
-            </div>
-            <p className="font-semibold text-red-600">- {amount} ₸</p>
-          </li>
-        ))}
-      </ul>
+    <div className="max-w-4xl mx-auto p-6 mt-10">
+      <h2 className="text-3xl font-extrabold text-red-800 mb-6 text-center">Транзакциялар тарихы</h2>
+      <TransactionList transactions={transactions} />
     </div>
   );
 }

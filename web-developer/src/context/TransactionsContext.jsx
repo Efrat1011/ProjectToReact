@@ -4,8 +4,8 @@ const TransactionsContext = createContext();
 
 export function TransactionsProvider({ children }) {
   const [transactions, setTransactions] = useState(() => {
-    const savedTx = localStorage.getItem("transactions");
-    return savedTx ? JSON.parse(savedTx) : [];
+    const saved = localStorage.getItem("transactions");
+    return saved ? JSON.parse(saved) : [];
   });
 
   useEffect(() => {

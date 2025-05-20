@@ -1,11 +1,8 @@
-export default function BalanceCard() {
-  const balance = 100000000;
+export default function BalanceCard({ balance }) {
   return (
-    <div className="bg-white rounded-2xl shadow-xl p-8 max-w-md mx-auto text-center transform hover:scale-105 transition-transform duration-300">
-      <h3 className="text-2xl font-bold mb-4 text-red-700">💳 Баланс</h3>
-      <p className="text-5xl font-extrabold text-gray-900">
-        {balance.toLocaleString()} ₸
-      </p>
+    <div className="bg-white rounded-xl shadow-lg p-6 max-w-sm mx-auto text-center mt-6">
+      <h3 className="text-gray-700 font-semibold mb-2">Сіздің Балансыңыз</h3>
+      <p className="text-4xl font-bold text-red-700">{balance.toLocaleString()} ₸</p>
     </div>
   );
 }

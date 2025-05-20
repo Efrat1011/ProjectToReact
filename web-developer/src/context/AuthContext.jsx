@@ -7,45 +7,40 @@ export function AuthProvider({ children }) {
     const savedUser = localStorage.getItem("user");
     return savedUser ? JSON.parse(savedUser) : null;
   });
-
   const [balance, setBalance] = useState(() => {
     const savedBalance = localStorage.getItem("balance");
-    return savedBalance ? Number(savedBalance) : 100000;
+    return savedBalance ? JSON.parse(savedBalance) : 100000; // Бастапқы баланс 100000
   });
 
   useEffect(() => {
-    if (user) {
-      localStorage.setItem("user", JSON.stringify(user));
-    } else {
-      localStorage.removeItem("user");
-      localStorage.removeItem("balance");
-    }
+    if (user) localStorage.setItem("user", JSON.stringify(user));
+    else localStorage.removeItem("user");
   }, [user]);
 
   useEffect(() => {
-    localStorage.setItem("balance", balance.toString());
+    localStorage.setItem("balance", JSON.stringify(balance));
   }, [balance]);
 
   const login = (username) => {
-    setUser({ name: username });
-    if (!localStorage.getItem("balance")) {
-      setBalance(100000);
-    }
+    setUser({ username });
   };
 
   const logout = () => {
     setUser(null);
-    setBalance(0);
-    localStorage.removeItem("user");
-    localStorage.removeItem("balance");
+  };
+
+  const increaseBalance = (amount) => {
+    setBalance((b) => b + amount);
   };
 
   const decreaseBalance = (amount) => {
-    setBalance((prev) => (prev - amount >= 0 ? prev - amount : prev));
+    setBalance((b) => b - amount);
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout, balance, decreaseBalance }}>
+    <AuthContext.Provider
+      value={{ user, login, logout, balance, increaseBalance, decreaseBalance }}
+    >
       {children}
     </AuthContext.Provider>
   );

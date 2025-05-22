@@ -8,7 +8,7 @@ export default function Header() {
     <header className="bg-gradient-to-r from-red-700 to-red-900 shadow-lg text-white px-4 sm:px-8 py-4 flex justify-between items-center select-none">
       <div className="flex items-center gap-3 sm:gap-6">
         <span className="text-3xl sm:text-4xl">🏦</span>
-        <h1 className="text-xl sm:text-3xl font-extrabold tracking-wide">Jana Bank</h1>
+        <h1 className="text-xl sm:text-3xl font-extrabold tracking-wide">Smart Bank</h1>
       </div>
       {user && (
         <div className="flex items-center gap-4 sm:gap-8 text-sm sm:text-lg font-semibold whitespace-nowrap">

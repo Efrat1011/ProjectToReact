@@ -13,7 +13,7 @@ export default function Transfer() {
     const sum = parseFloat(amount);
 
     if (!recipient.trim()) return alert("Қолданушы атын енгізіңіз");
-    if (!amount || sum <= 0) return alert("Дұрыс сома енгізіңіз");
+    if (!amount || isNaN(sum) || sum <= 0) return alert("Дұрыс сома енгізіңіз");
     if (sum > balance) return alert("Баланс жеткіліксіз!");
 
     const tx = {
@@ -59,11 +59,9 @@ export default function Transfer() {
             type="number"
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
-            placeholder="Мысалы: 5000"
+            placeholder="Мысалы: 5000000"
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-600 transition"
             required
-            min="1"
-            step="100"
           />
         </label>
         <button

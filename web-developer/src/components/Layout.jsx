@@ -1,6 +1,7 @@
 import Header from "./Header.jsx";
 import SideBar from "./SideBar.jsx";
 import Footer from "./Footer.jsx";
+import { Outlet } from "react-router-dom";
 
 export default function Layout({ children }) {
   return (
@@ -8,7 +9,9 @@ export default function Layout({ children }) {
       <Header />
       <div className="flex flex-1">
         <SideBar />
-        <main className="flex-grow p-6 bg-gray-50">{children}</main>
+        <main className="flex-1 p-6">{children}
+         <Outlet/>
+        </main>
       </div>
       <Footer />
     </div>

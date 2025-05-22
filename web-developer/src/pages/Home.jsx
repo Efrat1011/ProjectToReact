@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <div>
       <BalanceCard />
-      <h3 className="text-xl font-semibold mb-4">Соңғы транзакциялар</h3>
+      <h3 className="text-xl font-semibold mb-4 ">Соңғы транзакциялар</h3>
       {transactions.length === 0 ? (
         <p>Транзакциялар жоқ</p>
       ) : (

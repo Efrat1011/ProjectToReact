@@ -8,7 +8,9 @@ export default function Deposit() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const sum = parseFloat(amount);
-    if (!amount || sum <= 0) return alert("Дұрыс сома енгізіңіз");
+    if (isNaN(sum) || sum <= 0) {
+      return alert("Дұрыс сома енгізіңіз");
+    }
     increaseBalance(sum);
     setAmount("");
   };
@@ -20,16 +22,16 @@ export default function Deposit() {
       </h2>
       <form onSubmit={handleSubmit} className="space-y-6">
         <label className="block">
-          <span className="text-gray-700 font-semibold mb-1 block">Сома (теңге)</span>
+          <span className="text-gray-700 font-semibold mb-1 block">
+            Сома (теңге)
+          </span>
           <input
             type="number"
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
-            placeholder="Мысалы: 5000"
+            placeholder="Мысалы: 50000000"
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-600 transition"
             required
-            min="1"
-            step="100"
           />
         </label>
         <button

@@ -5,7 +5,7 @@ export default function Footer() {
       <div className="max-w-screen-lg mx-auto flex justify-center items-center gap-2 sm:gap-4 text-xs sm:text-sm">
         <span className="text-xl sm:text-2xl">🏦</span>
         <p className="font-light">
-          &copy; {new Date().getFullYear()} Jana Bank. Барлық құқықтар қорғалған.
+          &copy; {new Date().getFullYear()} Smart Bank. Барлық құқықтар қорғалған.
         </p>
       </div>
     </footer>

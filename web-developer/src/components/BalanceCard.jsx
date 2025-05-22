@@ -1,8 +1,15 @@
-export default function BalanceCard({ balance }) {
+// components/BalanceCard.jsx
+import { useAuth } from "../context/AuthContext";
+
+export default function BalanceCard() {
+  const { balance } = useAuth();
+
   return (
-    <div className="bg-white rounded-xl shadow-lg p-6 max-w-sm mx-auto text-center mt-6">
-      <h3 className="text-gray-700 font-semibold mb-2">Сіздің Балансыңыз</h3>
-      <p className="text-4xl font-bold text-red-700">{balance.toLocaleString()} ₸</p>
+    <div className="bg-white p-6 rounded shadow mb-6">
+      <h2 className="text-2xl font-bold mb-2">Сіздің балансыңыз</h2>
+      <p className="text-3xl font-semibold text-green-600">
+        {balance.toLocaleString()} ₸
+      </p>
     </div>
   );
 }
